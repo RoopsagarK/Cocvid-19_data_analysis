@@ -1,8 +1,8 @@
 from tkinter import *
 import matplotlib.pyplot as plt
+import seaborn as sns
 import pandas as pd
 import import_ipynb
-import covid_analysis.ipynb
 from PIL import ImageTk, Image
 
 root = Tk()
@@ -33,13 +33,23 @@ CategoryValue2 = StringVar()
 
 Category = ['Confirmed', 'Deaths', 'Recovered', 'Active', 'New-Cases', 'New-Deaths', 'New-Recovered']
 
-Cases = OptionMenu(DataFrame, CategoryValue1, *Category)
-Cases.grid(row=0 , column=1,padx=5, pady=5)
+Cases1 = OptionMenu(DataFrame, CategoryValue1, *Category)
+Cases1.grid(row=0 , column=1,padx=5, pady=5)
 CategoryValue1.set('Select Category')
 
-Date = OptionMenu(DataFrame, CategoryValue2, *Category) 
-Date.grid(row=0, column=3, padx=5, pady=5)
+Cases2 = OptionMenu(DataFrame, CategoryValue2, *Category) 
+Cases2.grid(row=0, column=2, padx=5, pady=5)
 CategoryValue2.set('Select Category')
+
+def Updater() :
+    Case1 = CategoryValue1.get()
+    Case2 = CategoryValue2.get()
+    sns.set_style('darkgrid')
+
+    plt.plot()
+
+UpdateButton = Button(DataFrame, text='Update', padx=2, command=Updater)
+UpdateButton.grid(row=0, column=3, padx=5, pady=5)
 
 Graph = Label(DataFrame, text='Graph', width=55,height=13,bg='pink',borderwidth=5)
 Graph.grid(row=1,column=1,columnspan=3,padx=15,pady=12)
