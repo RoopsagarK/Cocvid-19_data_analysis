@@ -51,7 +51,7 @@ Date.grid(row=0, column=3, padx=5, pady=5)
 
 Graph = Label(DataFrame, text='Graph', width=55,height=13,bg='pink',borderwidth=5)
 Graph.grid(row=1,column=1,columnspan=3,padx=15,pady=12)
-
+    
 InfoLabel = Label(DataFrame, text='Info', width=45, height=15, bg='lightblue',borderwidth=5)
 InfoLabel.grid(row=0, column=4,rowspan=2,padx=40)
 
