@@ -16,7 +16,6 @@ sns.set_style('darkgrid')
 covid_df = pd.read_csv('full_grouped.csv')
 covid_df.drop(columns="WHO_Region", inplace=True)
 
-
 cn_obj = Country_names()
 CountryNames = cn_obj.getCountryNames()
 
@@ -73,8 +72,7 @@ def Updater() :
     if(cases == 'Confirmed'):
         # sns.scatterplot(country_wise_df.month,CountryObj.confimed_cases())
         CountryObj.confimed_cases().plot()
-        graph.append(plt.show())
-
+        plt.show()
     elif(cases == 'Deaths'):
         CountryObj.deaths().plot()
         plt.show()
