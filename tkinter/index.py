@@ -12,9 +12,9 @@ root = Tk()
 root.title('Covid-19 Data Analyzer') #Setting title for the Window
 root.iconbitmap('tkinter/icon/covid-19.ico') #Setting Icon for the Window
 root.configure(bg='#272829') #Setting Background-color
-sns.set_style('darkgrid')
 covid_df = pd.read_csv('full_grouped.csv')
 covid_df.drop(columns="WHO_Region", inplace=True)
+sns.set_style('darkgrid')
 
 
 cn_obj = Country_names()
@@ -72,25 +72,46 @@ def Updater() :
 
     if(cases == 'Confirmed'):
         # sns.scatterplot(country_wise_df.month,CountryObj.confimed_cases())
-        CountryObj.confimed_cases().plot()
+        ax = plt.axes()
+        ax.set_facecolor("#241468")
+        plt.plot(CountryObj.confimed_cases(), "m-", linewidth=5, alpha=0.75)
+        plt.legend(['confirmed cases'])
         plt.show()
     elif(cases == 'Deaths'):
-        CountryObj.deaths().plot()
+        ax = plt.axes()
+        ax.set_facecolor("#0C356A")
+        plt.plot(CountryObj.confimed_cases(), color='#40F8FF', linewidth=5, alpha=0.75)
+        plt.legend(["Deaths"])
         plt.show()
     elif(cases == 'Recovered') :
-        CountryObj.recovered().plot()
+        ax = plt.axes()
+        ax.set_facecolor("#FFF5E0")
+        plt.plot(CountryObj.recovered(), color='#FF6969', linewidth=5, alpha=0.75)
+        plt.legend(["Recovered"])
         plt.show()
     elif(cases == 'Active') :
-        CountryObj.active().plot()
+        ax = plt.axes()
+        ax.set_facecolor("#0D1282")
+        plt.plot(CountryObj.active(), color='#EEEDED', linewidth=5, alpha=0.75)
+        plt.legend(["Active"])
         plt.show()
     elif(cases == 'New-Cases') :
-        CountryObj.new_cases().plot()
+        ax = plt.axes()
+        ax.set_facecolor("#ECF8F9")
+        plt.plot(CountryObj.new_cases(), color='#068DA9', linewidth=5, alpha=0.75)
+        plt.legend(["New cases"])
         plt.show()
     elif(cases == 'New-Deaths'):
-        CountryObj.new_deaths().plot()
+        ax = plt.axes()
+        ax.set_facecolor("#900C3F")
+        plt.plot(CountryObj.new_deaths(), color='#F8DE22', linewidth=5, alpha=0.75)
+        plt.legend(["New Deaths"])
         plt.show()
     elif(cases == 'New-Recovered'):
-        CountryObj.new_recovered().plot()
+        ax = plt.axes()
+        ax.set_facecolor("#EDF1D6")
+        plt.plot(CountryObj.new_recovered(), color='#609966', linewidth=5, alpha=0.75)
+        plt.legend(["New Recovered"])
         plt.show()
 
     
