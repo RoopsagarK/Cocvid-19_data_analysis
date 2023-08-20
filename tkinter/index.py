@@ -15,7 +15,6 @@ root.configure(bg='#272829') #Setting Background-color
 sns.set_style('darkgrid')
 covid_df = pd.read_csv('full_grouped.csv')
 covid_df.drop(columns="WHO_Region", inplace=True)
- graph = "<div></div>"
 
 
 cn_obj = Country_names()
@@ -102,7 +101,7 @@ def Updater() :
 UpdateButton = Button(DataFrame, text='Update', padx=2, command=Updater)
 UpdateButton.grid(row=0, column=3, padx=5, pady=5)
 
-Graph = HTMLLabel(DataFrame, html=graph, width=55,height=13,bg='pink',borderwidth=5)
+Graph = Label(DataFrame, text="Graph", width=55,height=13,bg='pink',borderwidth=5)
 Graph.grid(row=1,column=1,columnspan=3,padx=15,pady=12)
 
 
