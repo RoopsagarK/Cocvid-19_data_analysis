@@ -34,36 +34,47 @@ class Country:
     header_list.remove('date')
     header_list.remove('country')
     # country_wise_df = covid_df.groupby("country")[header_list]
+    covid_df['date'] = pd.to_datetime(covid_df.date)
+    country_wise_df = covid_df.copy()
+    
+
     def __init__(self, name):
         self.name = name
 
     def new_cases(self):
         country_wise_df = covid_df[covid_df["country"] == self.name]
-        return country_wise_df['new_cases'].tolist()
+        country_wise_df.set_index('date', inplace=True)
+        return country_wise_df['new_cases']
     
     def confimed_cases(self):
         country_wise_df = covid_df[covid_df["country"] == self.name]
-        return country_wise_df['confirmed'].tolist()
+        country_wise_df.set_index('date', inplace=True)
+        return country_wise_df['confirmed']
     
     def recovered(self):
         country_wise_df = covid_df[covid_df["country"] == self.name]
-        return country_wise_df['recovered'].tolist()
+        country_wise_df.set_index('date', inplace=True)
+        return country_wise_df['recovered']
     
     def deaths(self):
         country_wise_df = covid_df[covid_df["country"] == self.name]
-        return country_wise_df['deaths'].tolist()
+        country_wise_df.set_index('date', inplace=True)
+        return country_wise_df['deaths']
 
     def active(self):
         country_wise_df = covid_df[covid_df["country"] == self.name]
-        return country_wise_df['active'].tolist()
+        country_wise_df.set_index('date', inplace=True)
+        return country_wise_df['active']
     
     def new_deaths(self):
         country_wise_df = covid_df[covid_df["country"] == self.name]
-        return country_wise_df['new_deaths'].tolist()
+        country_wise_df.set_index('date', inplace=True)
+        return country_wise_df['new_deaths']
     
     def new_recovered(self):
         country_wise_df = covid_df[covid_df["country"] == self.name]
-        return country_wise_df['new_recovered'].tolist()
+        country_wise_df.set_index('date', inplace=True)
+        return country_wise_df['new_recovered']
     
 covid_df['date'] = pd.to_datetime(covid_df.date)
 covid_dt_df = covid_df.copy()

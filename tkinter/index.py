@@ -2,7 +2,6 @@ from tkinter import *
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
-import import_ipynb
 from Covid_analysis1 import Country
 from Covid_analysis1 import Country_names
 from PIL import ImageTk, Image
@@ -16,7 +15,7 @@ root.configure(bg='#272829') #Setting Background-color
 sns.set_style('darkgrid')
 covid_df = pd.read_csv('full_grouped.csv')
 covid_df.drop(columns="WHO_Region", inplace=True)
-
+ graph = "<div></div>"
 
 
 cn_obj = Country_names()
@@ -69,36 +68,41 @@ def Updater() :
     country_wise_df = covid_df[covid_df["country"] == country]
     country_wise_df["month"] = pd.DatetimeIndex(country_wise_df.date).month
     
+    InfoDisplayer(sum(CountryObj.confimed_cases()), sum(CountryObj.deaths()),sum(CountryObj.recovered()), sum(CountryObj.active()), sum(CountryObj.new_cases()), sum(CountryObj.new_deaths()), sum(CountryObj.new_recovered()))
+
+
     if(cases == 'Confirmed'):
-        plt.plot(country_wise_df.month,CountryObj.confimed_cases())
-        plt.show()
+        # sns.scatterplot(country_wise_df.month,CountryObj.confimed_cases())
+        CountryObj.confimed_cases().plot()
+        graph.append(plt.show())
+
     elif(cases == 'Deaths'):
-        plt.plot(country_wise_df.month, CountryObj.deaths())
+        CountryObj.deaths().plot()
         plt.show()
     elif(cases == 'Recovered') :
-        plt.plot(country_wise_df.month, CountryObj.recovered())
+        CountryObj.recovered().plot()
         plt.show()
     elif(cases == 'Active') :
-        plt.plot(country_wise_df.month, CountryObj.active())
+        CountryObj.active().plot()
+        plt.show()
     elif(cases == 'New-Cases') :
-        plt.plot(country_wise_df.month,CountryObj.new_cases())
+        CountryObj.new_cases().plot()
         plt.show()
     elif(cases == 'New-Deaths'):
-        plt.plot(country_wise_df.month, CountryObj.new_deaths())
+        CountryObj.new_deaths().plot()
         plt.show()
     elif(cases == 'New-Recovered'):
-        plt.plot(country_wise_df.month, CountryObj.new_recovered())
+        CountryObj.new_recovered().plot()
         plt.show()
 
-    print(sum(CountryObj.confimed_cases()))
-    InfoDisplayer(sum(CountryObj.confimed_cases()), sum(CountryObj.deaths()),sum(CountryObj.recovered()), sum(CountryObj.active()), sum(CountryObj.new_cases()), sum(CountryObj.new_deaths()), sum(CountryObj.new_recovered()))
+    
 
     
 
 UpdateButton = Button(DataFrame, text='Update', padx=2, command=Updater)
 UpdateButton.grid(row=0, column=3, padx=5, pady=5)
 
-Graph = Label(DataFrame, text='Graph', width=55,height=13,bg='pink',borderwidth=5)
+Graph = HTMLLabel(DataFrame, html=graph, width=55,height=13,bg='pink',borderwidth=5)
 Graph.grid(row=1,column=1,columnspan=3,padx=15,pady=12)
 
 
