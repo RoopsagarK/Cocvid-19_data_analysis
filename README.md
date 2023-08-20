@@ -2,6 +2,8 @@
 
 ## This project analysises WHO data on Covid 19 and is used to plot visualizations of said data
 
+> Currently tkinter works only on Microsoft Windows</br>
+> Contains data from 22-01-2020 to 27-07-2020
 ### Tools and resources used:
 * Juypter notebooks: analysis
 * Pandas, Numpy, Matplotlib, Plotly, Tkinter: Python modules for analyis and plotting
@@ -26,3 +28,4 @@
 - [x] Basic UI to put things together
 - [ ] Moving to web 
   
+## Thank you for visiting
