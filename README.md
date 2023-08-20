@@ -2,9 +2,11 @@
 
 ## This project analysises WHO data on Covid 19 and is used to plot visualizations of said data
 
-### Tools used:
+### Tools and resources used:
 * Juypter notebooks: analysis
 * Pandas, Numpy, Matplotlib, Plotly, Tkinter: Python modules for analyis and plotting
+* [CSV file (Kaggle)](https://www.kaggle.com/datasets/imdevskp/corona-virus-report?select=full_grouped.csv)
+* [Geojson file (DataHub.io)](https://datahub.io/core/geo-countries#resource-countries)
 
 ### Sample outputs
 
